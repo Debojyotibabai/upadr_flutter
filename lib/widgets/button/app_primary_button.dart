@@ -35,8 +35,8 @@ class AppPrimaryButton extends StatelessWidget {
           buttonText,
           style: TextStyle(
             fontFamily: "Inter",
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontSize: 17,
+            fontWeight: FontWeight.w700,
             color: textColor ?? Colors.white,
           ),
         ),
