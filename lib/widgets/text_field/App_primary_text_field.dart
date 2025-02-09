@@ -13,7 +13,7 @@ class AppPrimaryTextField extends StatelessWidget {
     borderRadius: BorderRadius.circular(10),
     borderSide: BorderSide(
       color: LightColors.gray100,
-      width: 1.5,
+      width: 1,
     ),
   );
 
@@ -21,7 +21,7 @@ class AppPrimaryTextField extends StatelessWidget {
     borderRadius: BorderRadius.circular(10),
     borderSide: BorderSide(
       color: Colors.black,
-      width: 1.5,
+      width: 1,
     ),
   );
 
@@ -29,7 +29,7 @@ class AppPrimaryTextField extends StatelessWidget {
     borderRadius: BorderRadius.circular(10),
     borderSide: BorderSide(
       color: Colors.red[300]!,
-      width: 1.5,
+      width: 1,
     ),
   );
 
@@ -37,7 +37,7 @@ class AppPrimaryTextField extends StatelessWidget {
     borderRadius: BorderRadius.circular(10),
     borderSide: BorderSide(
       color: Colors.red,
-      width: 1.5,
+      width: 1,
     ),
   );
 
