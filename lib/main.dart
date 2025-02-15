@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upadr/features/auth/signup/presentation/pages/signup.dart';
+import 'package:upadr/features/auth/create_new_password/presentation/pages/create_new_password.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: SignupScreen(),
+      home: CreateNewPasswordScreen(),
     );
   }
 }

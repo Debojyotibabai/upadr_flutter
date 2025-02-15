@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
+import 'package:upadr/widgets/text/primary_heading.dart';
+import 'package:upadr/widgets/text/primary_subheading.dart';
 import 'package:upadr/widgets/text/text_field_title.dart';
 import 'package:upadr/widgets/text_field/App_primary_text_field.dart';
 import 'package:upadr/widgets/text_field/app_primary_password_field.dart';
@@ -57,24 +59,11 @@ class _SignupScreenState extends State<SignupScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Text(
-                                "Sign up",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: "Inter",
-                                  color: Colors.black,
-                                ),
-                              ),
+                              PrimaryHeading(text: "Sign up"),
                               SizedBox(height: 10),
-                              Text(
-                                "Please enter your email and password or sign up with social media",
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontFamily: "Inter",
-                                  color: LightColors.gray300,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                              PrimarySubheading(
+                                text:
+                                    "Please enter your email and password or sign up with social media",
                               ),
                               SizedBox(height: 20),
                               TextFieldTitle(text: "Full Name"),

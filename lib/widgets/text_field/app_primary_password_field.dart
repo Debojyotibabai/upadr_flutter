@@ -52,10 +52,10 @@ class AppPrimaryPasswordField extends StatelessWidget {
         suffixIcon: isPasswordVisible
             ? IconButton(
                 onPressed: onPasswordVisibilityChanged,
-                icon: Icon(Icons.visibility))
+                icon: Icon(Icons.visibility_off))
             : IconButton(
                 onPressed: onPasswordVisibilityChanged,
-                icon: Icon(Icons.visibility_off)),
+                icon: Icon(Icons.visibility)),
         border: border,
         enabledBorder: border,
         focusedBorder: focusedBorder,
