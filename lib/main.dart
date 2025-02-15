@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upadr/features/app/notifications/presentation/pages/notifications.dart';
+import 'package:upadr/features/app/settings/presentation/pages/settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      home: NotificationsScreen(),
+      home: SettingsScreen(),
     );
   }
 }

@@ -7,7 +7,7 @@ class AppPrimaryButton extends StatelessWidget {
     required this.buttonText,
     this.width,
     this.backgroundColor,
-    this.textColor,
+    this.textColor = Colors.white,
     this.onPressed,
   });
 
@@ -26,10 +26,22 @@ class AppPrimaryButton extends StatelessWidget {
         style: ButtonStyle(
           elevation: WidgetStateProperty.all<double>(0),
           padding: WidgetStateProperty.all<EdgeInsets>(
-            EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           ),
           backgroundColor: WidgetStateProperty.all<Color>(
-              backgroundColor ?? LightColors.deepBlue),
+            backgroundColor ?? LightColors.deepBlue,
+          ),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+              side: BorderSide(
+                width: 2.5,
+                color: textColor != Colors.white
+                    ? textColor!
+                    : backgroundColor ?? LightColors.deepBlue,
+              ),
+            ),
+          ),
         ),
         child: Text(
           buttonText,
@@ -37,7 +49,7 @@ class AppPrimaryButton extends StatelessWidget {
             fontFamily: "Inter",
             fontSize: 17,
             fontWeight: FontWeight.w700,
-            color: textColor ?? Colors.white,
+            color: textColor,
           ),
         ),
       ),

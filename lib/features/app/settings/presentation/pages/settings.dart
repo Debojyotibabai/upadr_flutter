@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
+import 'package:upadr/widgets/dialog/confirmation_dialog.dart';
 import 'package:upadr/widgets/header/drawer_header_with_logo.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 
@@ -61,37 +62,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
-                  itemCount: settingsOption.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                settingsOption[index],
-                                style: TextStyle(
-                                  fontFamily: "Inter",
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 17,
-                                  color: LightColors.gray400,
-                                ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: LightColors.gray300,
-                                size: 20,
-                              )
-                            ],
-                          ),
+                itemCount: settingsOption.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 15,
+                          horizontal: 10,
                         ),
-                        Divider(),
-                      ],
-                    );
-                  }),
+                        child: Row(
+                          children: [
+                            Text(
+                              settingsOption[index],
+                              style: TextStyle(
+                                fontFamily: "Inter",
+                                fontWeight: FontWeight.w500,
+                                fontSize: 17,
+                                color: LightColors.gray400,
+                              ),
+                            ),
+                            Spacer(),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: LightColors.gray300,
+                              size: 20,
+                            )
+                          ],
+                        ),
+                      ),
+                      Divider(),
+                    ],
+                  );
+                },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
@@ -100,6 +104,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   buttonText: "Delete Account",
                   backgroundColor: LightColors.deepRed,
                   width: MediaQuery.of(context).size.width * 0.7,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return ConfirmationDialog(
+                          heading: "Delete Account",
+                          subheading:
+                              "Are you sure you want to delete your account? This process is irreversible and all your data will be lost.",
+                          confirmButtonText: "Delete Account",
+                          confirmButtonButtonColor: LightColors.deepRed,
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ),
