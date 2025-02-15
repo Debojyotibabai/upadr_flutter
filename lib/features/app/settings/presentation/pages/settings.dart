@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
+import 'package:upadr/widgets/custom_drawer.dart';
 import 'package:upadr/widgets/dialog/confirmation_dialog.dart';
 import 'package:upadr/widgets/header/drawer_header_with_logo.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
@@ -13,6 +14,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   final List<String> settingsOption = [
     "Terms and Conditions",
     "Privacy Policy",
@@ -26,7 +29,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DrawerHeaderWithLogo(),
+      key: _key,
+      appBar: DrawerHeaderWithLogo(
+        openDrawer: () {
+          _key.currentState!.openDrawer();
+        },
+      ),
+      drawer: CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: Column(
