@@ -16,7 +16,7 @@ class AppPrimaryPasswordField extends StatelessWidget {
   final OutlineInputBorder border = OutlineInputBorder(
     borderRadius: BorderRadius.circular(10),
     borderSide: BorderSide(
-      color: LightColors.gray100,
+      color: LightColors.gray200,
       width: 1,
     ),
   );
@@ -63,7 +63,7 @@ class AppPrimaryPasswordField extends StatelessWidget {
         focusedErrorBorder: focusedErrorBorder,
         hintText: hintText,
         hintStyle: TextStyle(
-          color: LightColors.gray100,
+          color: LightColors.gray200,
           fontFamily: "Inter",
           fontWeight: FontWeight.w400,
           fontSize: 17,

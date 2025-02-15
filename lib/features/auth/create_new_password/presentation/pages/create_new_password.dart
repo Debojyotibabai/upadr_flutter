@@ -23,7 +23,6 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SafeArea(
           bottom: false,
@@ -66,7 +65,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       style: TextStyle(
                         fontSize: 17,
                         fontFamily: "Inter",
-                        color: LightColors.gray100,
+                        color: LightColors.gray200,
                         fontWeight: FontWeight.w400,
                       ),
                     ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upadr/features/auth/create_new_password/presentation/pages/create_new_password.dart';
+import 'package:upadr/features/app/notifications/presentation/pages/notifications.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      home: CreateNewPasswordScreen(),
+      home: NotificationsScreen(),
     );
   }
 }

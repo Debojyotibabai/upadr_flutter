@@ -18,7 +18,7 @@ class PrimarySubheading extends StatelessWidget {
       style: TextStyle(
         fontSize: 17,
         fontFamily: "Inter",
-        color: textColor ?? LightColors.gray300,
+        color: textColor ?? LightColors.gray400,
         fontWeight: FontWeight.w400,
       ),
     );

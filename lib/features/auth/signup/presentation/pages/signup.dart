@@ -131,7 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontFamily: "Inter",
-                                      color: LightColors.gray100,
+                                      color: LightColors.gray200,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),

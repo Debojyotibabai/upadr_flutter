@@ -22,7 +22,7 @@ class TextFieldTitle extends StatelessWidget {
             style: TextStyle(
               fontSize: 17,
               fontFamily: "Inter",
-              color: LightColors.gray200,
+              color: LightColors.gray300,
               fontWeight: FontWeight.w500,
             ),
           ),
