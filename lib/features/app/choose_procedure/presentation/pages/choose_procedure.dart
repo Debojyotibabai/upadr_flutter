@@ -77,7 +77,14 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                       ),
                       SizedBox(height: 20),
                       Expanded(
-                        child: ListView.builder(
+                        child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 2,
+                          ),
                           itemCount: 6,
                           itemBuilder: (context, index) {
                             return GestureDetector(
@@ -91,7 +98,6 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                                 });
                               },
                               child: Container(
-                                margin: EdgeInsets.all(5),
                                 padding: EdgeInsets.all(20),
                                 decoration: BoxDecoration(
                                   color: selectedProcedures.contains(index)
@@ -104,15 +110,18 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                 ),
-                                child: Text(
-                                  "Procedure #${index + 1}",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: "Inter",
-                                    color: selectedProcedures.contains(index)
-                                        ? Colors.white
-                                        : LightColors.deepBlue,
-                                    fontWeight: FontWeight.w700,
+                                child: Center(
+                                  child: Text(
+                                    "Procedure #${index + 1}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontFamily: "Inter",
+                                      color: selectedProcedures.contains(index)
+                                          ? Colors.white
+                                          : LightColors.deepBlue,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
