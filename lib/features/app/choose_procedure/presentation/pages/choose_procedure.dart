@@ -4,6 +4,7 @@ import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/custom_drawer.dart';
 import 'package:upadr/widgets/header/drawer_header_without_logo.dart';
+import 'package:upadr/widgets/my_procedure_card.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
 
@@ -51,93 +52,113 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                     topRight: Radius.circular(50),
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 30,
-                    horizontal: 25,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: PrimaryHeading(text: "Welcome!"),
-                      ),
-                      SizedBox(height: 15),
-                      PrimarySubheading(
-                        text:
-                            "We’re here to get you ready for your procedure and make sure you have everything you need.",
-                        textColor: LightColors.gray200,
-                      ),
-                      SizedBox(height: 20),
-                      PrimarySubheading(
-                        text:
-                            "Let’s start with determining what procedure you need to get prepared for...",
-                        textColor: Colors.black,
-                      ),
-                      SizedBox(height: 20),
-                      Expanded(
-                        child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 2,
-                          ),
-                          itemCount: 6,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  if (selectedProcedures.contains(index)) {
-                                    selectedProcedures.remove(index);
-                                  } else {
-                                    selectedProcedures.add(index);
-                                  }
-                                });
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  color: selectedProcedures.contains(index)
-                                      ? LightColors.deepBlue
-                                      : Colors.white,
-                                  border: Border.all(
-                                    color: LightColors.deepBlue,
-                                    width: 2,
-                                  ),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 25,
+                        ).copyWith(top: 30),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            PrimaryHeading(text: "Welcome to upadr!"),
+                            SizedBox(height: 15),
+                            PrimarySubheading(
+                              text:
+                                  "We’re here to get you ready for your procedure and make sure you have everything you need.",
+                              textColor: LightColors.gray200,
+                            ),
+                            SizedBox(height: 20),
+                            PrimarySubheading(
+                              text:
+                                  "Let’s start with determining what procedure you need to get prepared for...",
+                              textColor: Colors.black,
+                            ),
+                            SizedBox(height: 20),
+                            Expanded(
+                              child: GridView.builder(
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  childAspectRatio: 2,
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    "Procedure #${index + 1}",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontFamily: "Inter",
-                                      color: selectedProcedures.contains(index)
-                                          ? Colors.white
-                                          : LightColors.deepBlue,
-                                      fontWeight: FontWeight.w700,
+                                itemCount: 6,
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (selectedProcedures
+                                            .contains(index)) {
+                                          selectedProcedures.remove(index);
+                                        } else {
+                                          selectedProcedures.add(index);
+                                        }
+                                      });
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.all(20),
+                                      decoration: BoxDecoration(
+                                        color:
+                                            selectedProcedures.contains(index)
+                                                ? LightColors.deepBlue
+                                                : Colors.white,
+                                        border: Border.all(
+                                          color: LightColors.deepBlue,
+                                          width: 2,
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "Procedure #${index + 1}",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: "Inter",
+                                            color: selectedProcedures
+                                                    .contains(index)
+                                                ? Colors.white
+                                                : LightColors.deepBlue,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
+                                  );
+                                },
                               ),
-                            );
-                          },
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Spacer(),
-                          Expanded(child: AppPrimaryButton(buttonText: "Next")),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 10),
+                        MyProcedureCard(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25,
+                          ).copyWith(bottom: 30),
+                          child: Row(
+                            children: [
+                              Spacer(),
+                              Expanded(
+                                child: AppPrimaryButton(buttonText: "Next"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

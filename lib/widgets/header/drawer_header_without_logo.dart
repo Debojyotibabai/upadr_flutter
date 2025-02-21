@@ -19,7 +19,7 @@ class DrawerHeaderWithoutLogo extends StatelessWidget
         child: Icon(
           Icons.menu,
           color: LightColors.deepBlue,
-          size: 35,
+          size: 37,
         ),
       ),
       actions: [

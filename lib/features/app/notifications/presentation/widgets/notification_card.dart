@@ -9,8 +9,7 @@ class NotificationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20),
-      margin:
-          EdgeInsets.symmetric(horizontal: 25, vertical: 17).copyWith(top: 0),
+      margin: EdgeInsets.symmetric(horizontal: 25).copyWith(bottom: 15),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: LightColors.gray100,
