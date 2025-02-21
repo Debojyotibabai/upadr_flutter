@@ -1,0 +1,90 @@
+import 'package:flutter/material.dart';
+import 'package:upadr/features/app/my_procedure/presentation/widgets/procedure_overview_card_left_image.dart';
+import 'package:upadr/features/app/my_procedure/presentation/widgets/procedure_overview_card_right_image.dart';
+import 'package:upadr/widgets/button/app_primary_button.dart';
+import 'package:upadr/widgets/custom_drawer.dart';
+import 'package:upadr/widgets/header/drawer_header_with_logo.dart';
+import 'package:upadr/widgets/text/primary_heading.dart';
+import 'package:upadr/widgets/text/primary_subheading.dart';
+
+class ProcedureOverviewScreen extends StatefulWidget {
+  const ProcedureOverviewScreen({super.key});
+
+  @override
+  State<ProcedureOverviewScreen> createState() =>
+      _ProcedureOverviewScreenState();
+}
+
+class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
+  List<int> selectedProcedures = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _key,
+      appBar: DrawerHeaderWithLogo(
+        openDrawer: () {
+          _key.currentState!.openDrawer();
+        },
+      ),
+      drawer: CustomDrawer(),
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PrimaryHeading(
+                          text:
+                              "Great! Here’s an overview on what your colonoscopy prep process will look like.",
+                        ),
+                        const SizedBox(height: 10),
+                        PrimarySubheading(
+                          text:
+                              "But don’t worry! We will send you notification when these things need to get done so you don’t have to remember it all.",
+                          textColor: Colors.black,
+                        ),
+                        const SizedBox(height: 20),
+                        Center(
+                          child: AppPrimaryButton(
+                            buttonText: "Allow Notifications",
+                            width: MediaQuery.of(context).size.width * 0.7,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ProcedureOverviewCardRightImage(),
+                  ProcedureOverviewCardLeftImage(),
+                  ProcedureOverviewCardRightImage(),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25,
+            ).copyWith(
+              top: 10,
+              bottom: 30,
+            ),
+            child: AppPrimaryButton(
+              buttonText: "FAQ's and Tips",
+              width: MediaQuery.of(context).size.width * 0.7,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

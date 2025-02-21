@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upadr/features/app/my_procedure/presentation/pages/my_procedure_listing.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/procedure_overview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      home: MyProcedureListingScreen(),
+      home: ProcedureOverviewScreen(),
     );
   }
 }

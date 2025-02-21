@@ -19,6 +19,7 @@ class PrimaryHeading extends StatelessWidget {
         fontWeight: FontWeight.w600,
         fontFamily: "Inter",
         color: textColor ?? Colors.black,
+        height: 1.3,
       ),
     );
   }
