@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upadr/styles/light_colors.dart';
 
 class ProcedureOverviewCardLeftImage extends StatelessWidget {
   const ProcedureOverviewCardLeftImage({super.key});
@@ -56,6 +57,17 @@ class ProcedureOverviewCardLeftImage extends StatelessWidget {
                       fontFamily: "Inter",
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Show More Details",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontFamily: "Inter",
+                      color: LightColors.deepSky,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],

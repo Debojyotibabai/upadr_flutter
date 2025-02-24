@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/features/app/my_procedure/presentation/widgets/procedure_overview_card_left_image.dart';
 import 'package:upadr/features/app/my_procedure/presentation/widgets/procedure_overview_card_right_image.dart';
+import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/custom_drawer.dart';
+import 'package:upadr/widgets/dialog/confirmation_dialog.dart';
 import 'package:upadr/widgets/header/drawer_header_with_logo.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
@@ -18,7 +20,7 @@ class ProcedureOverviewScreen extends StatefulWidget {
 class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-  List<int> selectedProcedures = [];
+  final menuOptions = ["Edit Procedure", "Cancel Procedure"];
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +46,59 @@ class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        PrimaryHeading(
-                          text:
-                              "Great! Here’s an overview on what your colonoscopy prep process will look like.",
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: PrimaryHeading(
+                                text:
+                                    "Great! Here’s an overview on what your colonoscopy prep process will look like.",
+                              ),
+                            ),
+                            PopupMenuButton(
+                              icon: Icon(
+                                Icons.more_vert,
+                                color: LightColors.gray200,
+                                size: 27,
+                              ),
+                              color: LightColors.gray100,
+                              itemBuilder: (BuildContext context) {
+                                return menuOptions.map(
+                                  (menu) {
+                                    return PopupMenuItem(
+                                      value: menu,
+                                      child: Text(
+                                        menu,
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: "Inter",
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).toList();
+                              },
+                              onSelected: (selectedItem) {
+                                if (selectedItem == "Edit Procedure") {
+                                } else if (selectedItem == "Cancel Procedure") {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => ConfirmationDialog(
+                                      heading: "Cancel Procedure",
+                                      subheading:
+                                          "Are you sure you want to cancel your procedure? This process is irreversible and you will have to re-enter your information later.",
+                                      confirmButtonText: "Cancel Procedure",
+                                      confirmButtonButtonColor:
+                                          LightColors.deepRed,
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 10),
                         PrimarySubheading(
@@ -82,7 +134,7 @@ class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
               buttonText: "FAQ's and Tips",
               width: MediaQuery.of(context).size.width * 0.7,
             ),
-          )
+          ),
         ],
       ),
     );
