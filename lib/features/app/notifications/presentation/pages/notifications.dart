@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/features/app/notifications/presentation/widgets/notification_card.dart';
-import 'package:upadr/widgets/header/back_header_without_logo.dart';
+import 'package:upadr/widgets/header/back_header_without_notification.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 
 class NotificationsScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BackHeaderWithoutLogo(),
+      appBar: BackHeaderWithoutNotification(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

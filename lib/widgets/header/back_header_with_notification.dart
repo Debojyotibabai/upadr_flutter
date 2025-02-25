@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
 import 'package:upadr/styles/light_colors.dart';
 
-class BackHeaderWithoutLogo extends StatelessWidget
+class BackHeaderWithNotification extends StatelessWidget
     implements PreferredSizeWidget {
-  const BackHeaderWithoutLogo({super.key});
+  const BackHeaderWithNotification({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,16 @@ class BackHeaderWithoutLogo extends StatelessWidget
         color: LightColors.deepBlue,
         size: 28,
       ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.notifications,
+            color: LightColors.deepBlue,
+            size: 35,
+          ),
+        ),
+      ],
     );
   }
 

@@ -88,7 +88,7 @@ class _MyProcedureListingScreenState extends State<MyProcedureListingScreen> {
           SizedBox(height: 10),
           Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 25).copyWith(bottom: 30),
+                const EdgeInsets.symmetric(horizontal: 25).copyWith(bottom: 10),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -38,7 +38,7 @@ class ProcedureOverviewCardRightImage extends StatelessWidget {
                       fontSize: 17,
                       fontFamily: "Inter",
                       color: Colors.black,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   SizedBox(height: 10),
@@ -48,7 +48,7 @@ class ProcedureOverviewCardRightImage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 17,
                       fontFamily: "Inter",
-                      color: Colors.black,
+                      color: LightColors.gray400,
                       fontWeight: FontWeight.w400,
                     ),
                   ),

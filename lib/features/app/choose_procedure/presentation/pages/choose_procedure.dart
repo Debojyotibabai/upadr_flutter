@@ -55,30 +55,32 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                 child: Column(
                   children: [
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 25,
-                        ).copyWith(top: 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            PrimaryHeading(text: "Welcome to upadr!"),
-                            SizedBox(height: 15),
-                            PrimarySubheading(
-                              text:
-                                  "We’re here to get you ready for your procedure and make sure you have everything you need.",
-                              textColor: LightColors.gray200,
-                            ),
-                            SizedBox(height: 20),
-                            PrimarySubheading(
-                              text:
-                                  "Let’s start with determining what procedure you need to get prepared for...",
-                              textColor: Colors.black,
-                            ),
-                            SizedBox(height: 20),
-                            Expanded(
-                              child: GridView.builder(
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25,
+                          ).copyWith(top: 30),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              PrimaryHeading(text: "Welcome to upadr!"),
+                              SizedBox(height: 15),
+                              PrimarySubheading(
+                                text:
+                                    "We’re here to get you ready for your procedure and make sure you have everything you need.",
+                                textColor: LightColors.gray200,
+                              ),
+                              SizedBox(height: 20),
+                              PrimarySubheading(
+                                text:
+                                    "Let’s start with determining what procedure you need to get prepared for...",
+                                textColor: Colors.black,
+                              ),
+                              SizedBox(height: 20),
+                              GridView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
                                 gridDelegate:
                                     SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
@@ -131,9 +133,9 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                                     ),
                                   );
                                 },
-                              ),
-                            ),
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
