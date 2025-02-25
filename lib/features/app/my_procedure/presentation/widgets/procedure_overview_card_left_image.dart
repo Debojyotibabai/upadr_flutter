@@ -16,7 +16,7 @@ class ProcedureOverviewCardLeftImage extends StatelessWidget {
             offset: Offset(-30, 0),
             child: CircleAvatar(
               backgroundColor: Colors.black12,
-              radius: 90,
+              radius: 85,
             ),
           ),
           Expanded(

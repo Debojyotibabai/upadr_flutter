@@ -15,12 +15,9 @@ class EditProcedureScreen extends StatefulWidget {
 }
 
 class _EditProcedureScreenState extends State<EditProcedureScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
       appBar: BackHeaderWithNotification(),
       body: Padding(
         padding: const EdgeInsets.all(25),
