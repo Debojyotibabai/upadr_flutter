@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/auth/login/presentation/pages/login.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
@@ -27,10 +28,15 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.black,
-                    size: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.black,
+                      size: 30,
+                    ),
                   ),
                   Spacer(),
                 ],
@@ -89,10 +95,19 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               AppPrimaryButton(
                 buttonText: "Verify",
                 width: MediaQuery.of(context).size.width * 0.7,
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 10),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: Text(
                   "Change Email?",
                   style: TextStyle(

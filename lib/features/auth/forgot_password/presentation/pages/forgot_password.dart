@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/auth/create_new_password/presentation/pages/create_new_password.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
@@ -26,10 +27,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             children: [
               Row(
                 children: [
-                  Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.black,
-                    size: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.black,
+                      size: 30,
+                    ),
                   ),
                   Spacer(),
                 ],
@@ -60,6 +66,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               AppPrimaryButton(
                 buttonText: "Send Code",
                 width: MediaQuery.of(context).size.width * 0.7,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CreateNewPasswordScreen(),
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 30),
             ],

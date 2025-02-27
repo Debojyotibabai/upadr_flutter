@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/auth/login/presentation/pages/login.dart';
+import 'package:upadr/features/auth/signup/presentation/pages/signup.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 
@@ -25,11 +27,25 @@ class WelcomeScreen extends StatelessWidget {
               AppPrimaryButton(
                 buttonText: "Sign Up",
                 width: MediaQuery.of(context).size.width * 0.75,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const SignupScreen(),
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 15),
               AppPrimaryButton(
                 buttonText: "Login",
                 width: MediaQuery.of(context).size.width * 0.75,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),

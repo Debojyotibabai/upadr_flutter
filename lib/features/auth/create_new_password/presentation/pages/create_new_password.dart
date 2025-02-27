@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/auth/login/presentation/pages/login.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
@@ -32,10 +33,15 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 30,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.black,
+                    size: 30,
+                  ),
                 ),
                 SizedBox(height: 100),
                 Center(
@@ -115,6 +121,13 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   child: AppPrimaryButton(
                     buttonText: "Confirm",
                     width: MediaQuery.of(context).size.width * 0.7,
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
                 SizedBox(height: 30),

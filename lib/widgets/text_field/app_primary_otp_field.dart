@@ -10,7 +10,7 @@ class AppPrimaryOtpField extends StatelessWidget {
     return OtpTextField(
       numberOfFields: 6,
       showFieldAsBox: true,
-      fieldWidth: 55,
+      fieldWidth: 45,
       borderWidth: 1,
       borderColor: LightColors.gray200,
       enabledBorderColor: LightColors.gray200,

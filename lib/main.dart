@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upadr/features/app/faq/presentation/pages/particular_faq.dart';
+import 'package:upadr/features/auth/splash/presentation/pages/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       debugShowCheckedModeBanner: false,
-      home: ParticularFaqScreen(),
+      home: SplashScreen(),
     );
   }
 }

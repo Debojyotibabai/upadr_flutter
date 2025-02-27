@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/my_procedure_listing.dart';
+import 'package:upadr/features/auth/forgot_password/presentation/pages/forgot_password.dart';
+import 'package:upadr/features/auth/signup/presentation/pages/signup.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
@@ -86,7 +89,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               Spacer(),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ForgotPasswordScreen(),
+                                    ),
+                                  );
+                                },
                                 child: Text(
                                   "Forgot Password?",
                                   style: TextStyle(
@@ -107,6 +117,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               AppPrimaryButton(
                                 buttonText: "Log in",
                                 width: MediaQuery.of(context).size.width * 0.7,
+                                onPressed: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const MyProcedureListingScreen(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                },
                               ),
                               SizedBox(height: 20),
                               Row(
@@ -123,7 +142,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SignupScreen(),
+                                        ),
+                                      );
+                                    },
                                     child: Text(
                                       "Sign up",
                                       style: TextStyle(

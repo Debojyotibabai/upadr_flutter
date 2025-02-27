@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/auth/login/presentation/pages/login.dart';
+import 'package:upadr/features/auth/verify_email/presentation/pages/verify_email.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
@@ -120,6 +122,14 @@ class _SignupScreenState extends State<SignupScreen> {
                               AppPrimaryButton(
                                 buttonText: "Sign up",
                                 width: MediaQuery.of(context).size.width * 0.7,
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const VerifyEmailScreen(),
+                                    ),
+                                  );
+                                },
                               ),
                               SizedBox(height: 20),
                               Row(
@@ -136,7 +146,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                     ),
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginScreen(),
+                                        ),
+                                      );
+                                    },
                                     child: Text(
                                       "Log in",
                                       style: TextStyle(
