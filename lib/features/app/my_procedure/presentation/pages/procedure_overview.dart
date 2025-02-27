@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:upadr/features/app/faq/presentation/pages/faq_listing.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/edit_procedure.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/procedure_particular_step_overview.dart';
 import 'package:upadr/features/app/my_procedure/presentation/widgets/procedure_overview_card_left_image.dart';
 import 'package:upadr/features/app/my_procedure/presentation/widgets/procedure_overview_card_right_image.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
-import 'package:upadr/widgets/custom_drawer.dart';
 import 'package:upadr/widgets/dialog/confirmation_dialog.dart';
-import 'package:upadr/widgets/header/drawer_header_with_logo.dart';
+import 'package:upadr/widgets/header/back_header_with_notification.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
 
@@ -18,20 +20,12 @@ class ProcedureOverviewScreen extends StatefulWidget {
 }
 
 class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
   final menuOptions = ["Edit Procedure", "Cancel Procedure"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
-      appBar: DrawerHeaderWithLogo(
-        openDrawer: () {
-          _key.currentState!.openDrawer();
-        },
-      ),
-      drawer: CustomDrawer(),
+      appBar: BackHeaderWithNotification(),
       body: Column(
         children: [
           Expanded(
@@ -83,6 +77,12 @@ class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
                               },
                               onSelected: (selectedItem) {
                                 if (selectedItem == "Edit Procedure") {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const EditProcedureScreen(),
+                                    ),
+                                  );
                                 } else if (selectedItem == "Cancel Procedure") {
                                   showDialog(
                                     context: context,
@@ -116,9 +116,36 @@ class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
                       ],
                     ),
                   ),
-                  ProcedureOverviewCardRightImage(),
-                  ProcedureOverviewCardLeftImage(),
-                  ProcedureOverviewCardRightImage(),
+                  ProcedureOverviewCardRightImage(
+                    onSeeMore: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const ProcedureParticularStepOverviewScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  ProcedureOverviewCardLeftImage(
+                    onSeeMore: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const ProcedureParticularStepOverviewScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  ProcedureOverviewCardRightImage(
+                    onSeeMore: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const ProcedureParticularStepOverviewScreen(),
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -133,6 +160,14 @@ class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
             child: AppPrimaryButton(
               buttonText: "FAQ's and Tips",
               width: MediaQuery.of(context).size.width * 0.7,
+              onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const FaqListingScreen(),
+                  ),
+                  (route) => false,
+                );
+              },
             ),
           ),
         ],

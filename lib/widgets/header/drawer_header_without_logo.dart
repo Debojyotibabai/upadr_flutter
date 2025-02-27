@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upadr/features/app/notifications/presentation/pages/notifications.dart';
 import 'package:upadr/styles/light_colors.dart';
 
 class DrawerHeaderWithoutLogo extends StatelessWidget
@@ -24,7 +25,13 @@ class DrawerHeaderWithoutLogo extends StatelessWidget
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const NotificationsScreen(),
+              ),
+            );
+          },
           icon: Icon(
             Icons.notifications,
             color: LightColors.deepBlue,

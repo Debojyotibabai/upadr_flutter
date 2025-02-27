@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upadr/features/app/faq/presentation/pages/particular_faq.dart';
 import 'package:upadr/features/app/faq/presentation/widgets/faq_card.dart';
 import 'package:upadr/widgets/custom_drawer.dart';
 import 'package:upadr/widgets/header/drawer_header_with_logo.dart';
@@ -36,7 +37,16 @@ class _FaqListingScreenState extends State<FaqListingScreen> {
             child: ListView.builder(
               itemCount: 10,
               itemBuilder: (context, index) {
-                return FaqCard(text: "Procedure ${index + 1}");
+                return FaqCard(
+                  text: "Procedure ${index + 1}",
+                  onPress: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ParticularFaqScreen(),
+                      ),
+                    );
+                  },
+                );
               },
             ),
           ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/app/choose_procedure/presentation/pages/choose_date_time.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/my_procedure_listing.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/custom_drawer.dart';
@@ -144,7 +146,17 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 10),
-                        MyProcedureCard(),
+                        MyProcedureCard(
+                          onPress: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const MyProcedureListingScreen(),
+                              ),
+                              (route) => false,
+                            );
+                          },
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 25,
@@ -153,7 +165,17 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                             children: [
                               Spacer(),
                               Expanded(
-                                child: AppPrimaryButton(buttonText: "Next"),
+                                child: AppPrimaryButton(
+                                  buttonText: "Next",
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ChooseDateTimeScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             ],
                           ),

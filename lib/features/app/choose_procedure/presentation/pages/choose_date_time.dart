@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/procedure_overview.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
-import 'package:upadr/widgets/custom_drawer.dart';
-import 'package:upadr/widgets/header/drawer_header_without_logo.dart';
+import 'package:upadr/widgets/header/back_header_without_logo.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
 import 'package:upadr/widgets/text/text_field_title.dart';
@@ -18,21 +18,11 @@ class ChooseDateTimeScreen extends StatefulWidget {
 }
 
 class _ChooseDateTimeScreenState extends State<ChooseDateTimeScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
-  List<int> selectedProcedures = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
       backgroundColor: LightColors.lightSky,
-      appBar: DrawerHeaderWithoutLogo(
-        openDrawer: () {
-          _key.currentState!.openDrawer();
-        },
-      ),
-      drawer: CustomDrawer(),
+      appBar: BackHeaderWithoutLogo(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -100,12 +90,23 @@ class _ChooseDateTimeScreenState extends State<ChooseDateTimeScreen> {
                               buttonText: "Back",
                               backgroundColor: Colors.white,
                               textColor: LightColors.deepSky,
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
                             ),
                           ),
                           Spacer(),
                           Expanded(
                             child: AppPrimaryButton(
                               buttonText: "Next",
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ProcedureOverviewScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],

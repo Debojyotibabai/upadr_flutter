@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:upadr/styles/light_colors.dart';
 
 class ProcedureOverviewCardRightImage extends StatelessWidget {
-  const ProcedureOverviewCardRightImage({super.key});
+  const ProcedureOverviewCardRightImage({
+    super.key,
+    required this.onSeeMore,
+  });
+
+  final void Function() onSeeMore;
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +58,19 @@ class ProcedureOverviewCardRightImage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    "Show More Details",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontFamily: "Inter",
-                      color: LightColors.deepSky,
-                      fontWeight: FontWeight.w600,
+                  GestureDetector(
+                    onTap: () {
+                      onSeeMore();
+                    },
+                    child: Text(
+                      "Show More Details",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: "Inter",
+                        color: LightColors.deepSky,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],

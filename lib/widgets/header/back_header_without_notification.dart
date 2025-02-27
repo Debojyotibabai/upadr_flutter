@@ -11,10 +11,15 @@ class BackHeaderWithoutNotification extends StatelessWidget
     return AppBar(
       backgroundColor: LightColors.lightSky,
       title: Image.asset(Images.logoWithAppName, scale: 4),
-      leading: Icon(
-        Icons.arrow_back_ios,
-        color: LightColors.deepBlue,
-        size: 28,
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Icon(
+          Icons.arrow_back_ios,
+          color: LightColors.deepBlue,
+          size: 28,
+        ),
       ),
     );
   }

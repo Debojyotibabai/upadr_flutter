@@ -86,6 +86,9 @@ class _EditProcedureScreenState extends State<EditProcedureScreen> {
                   Expanded(
                     child: AppPrimaryButton(
                       buttonText: "Done",
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
                 ],

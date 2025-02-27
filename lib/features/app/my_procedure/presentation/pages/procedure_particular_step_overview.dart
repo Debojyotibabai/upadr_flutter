@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:upadr/features/app/choose_procedure/presentation/pages/choose_procedure.dart';
+import 'package:upadr/features/app/faq/presentation/pages/faq_listing.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/header/back_header_with_notification.dart';
@@ -71,6 +73,14 @@ class _ProcedureParticularStepOverviewScreenState
                     AppPrimaryButton(
                       buttonText: "FAQ's and Tips",
                       width: MediaQuery.of(context).size.width * 0.7,
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => const FaqListingScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      },
                     ),
                     SizedBox(height: 10),
                     AppPrimaryButton(
@@ -78,6 +88,14 @@ class _ProcedureParticularStepOverviewScreenState
                       width: MediaQuery.of(context).size.width * 0.7,
                       textColor: LightColors.deepSky,
                       backgroundColor: Colors.white,
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => const ChooseProcedureScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      },
                     ),
                   ],
                 ),

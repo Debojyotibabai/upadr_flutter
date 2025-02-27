@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:upadr/features/app/choose_procedure/presentation/pages/choose_procedure.dart';
+import 'package:upadr/features/app/faq/presentation/pages/faq_listing.dart';
+import 'package:upadr/features/app/my_procedure/presentation/pages/procedure_overview.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/custom_drawer.dart';
@@ -17,8 +20,6 @@ class MyProcedureListingScreen extends StatefulWidget {
 
 class _MyProcedureListingScreenState extends State<MyProcedureListingScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-
-  List<int> selectedProcedures = [];
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,15 @@ class _MyProcedureListingScreenState extends State<MyProcedureListingScreen> {
             child: ListView.builder(
               itemCount: 2,
               itemBuilder: (context, index) {
-                return MyProcedureCard();
+                return MyProcedureCard(
+                  onPress: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProcedureOverviewScreen(),
+                      ),
+                    );
+                  },
+                );
               },
             ),
           ),
@@ -81,14 +90,22 @@ class _MyProcedureListingScreenState extends State<MyProcedureListingScreen> {
             child: ListView.builder(
               itemCount: 5,
               itemBuilder: (context, index) {
-                return MyProcedureCard();
+                return MyProcedureCard(
+                  onPress: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProcedureOverviewScreen(),
+                      ),
+                    );
+                  },
+                );
               },
             ),
           ),
           SizedBox(height: 10),
           Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 25).copyWith(bottom: 10),
+                const EdgeInsets.symmetric(horizontal: 25).copyWith(bottom: 30),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -97,6 +114,14 @@ class _MyProcedureListingScreenState extends State<MyProcedureListingScreen> {
                   AppPrimaryButton(
                     buttonText: "FAQ's and Tips",
                     width: MediaQuery.of(context).size.width * 0.7,
+                    onPressed: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const FaqListingScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
                   ),
                   SizedBox(height: 10),
                   AppPrimaryButton(
@@ -104,6 +129,14 @@ class _MyProcedureListingScreenState extends State<MyProcedureListingScreen> {
                     width: MediaQuery.of(context).size.width * 0.7,
                     textColor: LightColors.deepSky,
                     backgroundColor: Colors.white,
+                    onPressed: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => const ChooseProcedureScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
                   ),
                 ],
               ),
