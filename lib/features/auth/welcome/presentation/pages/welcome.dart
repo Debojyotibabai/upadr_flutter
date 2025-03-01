@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upadr/assets/images.dart';
 import 'package:upadr/features/auth/login/presentation/pages/login.dart';
-import 'package:upadr/features/auth/signup/presentation/pages/signup.dart';
+import 'package:upadr/features/auth/signup/presentation/page/signup.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
 

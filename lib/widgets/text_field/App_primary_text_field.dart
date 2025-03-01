@@ -5,9 +5,13 @@ class AppPrimaryTextField extends StatelessWidget {
   AppPrimaryTextField({
     super.key,
     required this.hintText,
+    this.controller,
+    this.validator,
   });
 
   final String hintText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   final OutlineInputBorder border = OutlineInputBorder(
     borderRadius: BorderRadius.circular(10),
@@ -44,6 +48,8 @@ class AppPrimaryTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         border: border,
         enabledBorder: border,
@@ -64,6 +70,9 @@ class AppPrimaryTextField extends StatelessWidget {
         fontWeight: FontWeight.w400,
         fontSize: 17,
       ),
+      validator: validator ??
+          (value) =>
+              value!.isEmpty ? '${hintText.toLowerCase()} is required' : null,
     );
   }
 }

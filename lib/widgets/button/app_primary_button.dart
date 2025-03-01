@@ -9,6 +9,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor = Colors.white,
     this.onPressed,
+    this.isLoading = false,
   });
 
   final String buttonText;
@@ -16,13 +17,14 @@ class AppPrimaryButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final void Function()? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? MediaQuery.of(context).size.width,
       child: ElevatedButton(
-        onPressed: onPressed ?? () {},
+        onPressed: isLoading ? null : onPressed ?? () {},
         style: ButtonStyle(
           elevation: WidgetStateProperty.all<double>(0),
           padding: WidgetStateProperty.all<EdgeInsets>(
@@ -43,15 +45,19 @@ class AppPrimaryButton extends StatelessWidget {
             ),
           ),
         ),
-        child: Text(
-          buttonText,
-          style: TextStyle(
-            fontFamily: "Inter",
-            fontSize: 17,
-            fontWeight: FontWeight.w700,
-            color: textColor,
-          ),
-        ),
+        child: isLoading
+            ? CircularProgressIndicator(
+                color: textColor,
+              )
+            : Text(
+                buttonText,
+                style: TextStyle(
+                  fontFamily: "Inter",
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: textColor,
+                ),
+              ),
       ),
     );
   }

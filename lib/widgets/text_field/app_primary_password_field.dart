@@ -7,11 +7,15 @@ class AppPrimaryPasswordField extends StatelessWidget {
     required this.hintText,
     required this.isPasswordVisible,
     required this.onPasswordVisibilityChanged,
+    this.controller,
+    this.validator,
   });
 
   final String hintText;
   final bool isPasswordVisible;
   final void Function() onPasswordVisibilityChanged;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   final OutlineInputBorder border = OutlineInputBorder(
     borderRadius: BorderRadius.circular(10),
@@ -48,6 +52,8 @@ class AppPrimaryPasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         suffixIcon: isPasswordVisible
             ? IconButton(
@@ -76,6 +82,9 @@ class AppPrimaryPasswordField extends StatelessWidget {
         fontWeight: FontWeight.w400,
         fontSize: 17,
       ),
+      validator: validator ??
+          (value) =>
+              value!.isEmpty ? '${hintText.toLowerCase()} is required' : null,
     );
   }
 }
