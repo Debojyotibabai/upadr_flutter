@@ -21,6 +21,15 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
   bool isPasswordVisible = true;
   bool isConfirmPasswordVisible = true;
 
+  String _enteredOtp = "";
+
+  void _handleOtpEntered(String otp) {
+    setState(() {
+      _enteredOtp = otp;
+    });
+    print("Entered OTP: $_enteredOtp");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +68,9 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 ),
                 SizedBox(height: 70),
                 Center(
-                  child: AppPrimaryOtpField(),
+                  child: AppPrimaryOtpField(
+                    onOtpEntered: _handleOtpEntered,
+                  ),
                 ),
                 SizedBox(height: 40),
                 Row(

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upadr/assets/images.dart';
 import 'package:upadr/features/auth/login/presentation/pages/login.dart';
 import 'package:upadr/features/auth/signup/presentation/bloc/signup_with_email_password/signup_with_email_password_bloc.dart';
-import 'package:upadr/features/auth/verify_email/presentation/pages/verify_email.dart';
+import 'package:upadr/features/auth/verify_email/presentation/page/verify_email.dart';
 import 'package:upadr/models/signup_with_email_and_password_model.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/utils/constants.dart';
@@ -27,19 +27,19 @@ class _SignupScreenState extends State<SignupScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailAddressController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController emailAddressController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
       TextEditingController();
 
   void disposeTextFields() {
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    _emailAddressController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailAddressController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
   }
 
   @override
@@ -69,7 +69,7 @@ class _SignupScreenState extends State<SignupScreen> {
   String? _validateConfirmPassword(String? value) {
     if (value == null || value.isEmpty) {
       return 'confirm password is required';
-    } else if (value != _passwordController.text) {
+    } else if (value != passwordController.text) {
       return 'passwords must be same';
     }
     return null;
@@ -80,11 +80,11 @@ class _SignupScreenState extends State<SignupScreen> {
       BlocProvider.of<SignupWithEmailPasswordBloc>(context).add(
         SignupWithEmailPassword(
           SignupWithEmailAndPasswordModel(
-            confirmPassword: _confirmPasswordController.text,
-            emailAddress: _emailAddressController.text,
-            firstName: _firstNameController.text,
-            lastName: _lastNameController.text,
-            password: _passwordController.text,
+            confirmPassword: confirmPasswordController.text,
+            emailAddress: emailAddressController.text,
+            firstName: firstNameController.text,
+            lastName: lastNameController.text,
+            password: passwordController.text,
           ),
         ),
       );
@@ -138,7 +138,22 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => const VerifyEmailScreen(),
+                                builder: (context) => VerifyEmailScreen(
+                                  emailAddress: emailAddressController.text,
+                                  firstName: firstNameController.text,
+                                  lastName: lastNameController.text,
+                                  password: passwordController.text,
+                                  confirmPassword:
+                                      confirmPasswordController.text,
+                                ),
+                              ),
+                            );
+                          } else if (signupWithEmailPasswordState
+                              is SignupWithEmailPasswordFailure) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content:
+                                    Text(signupWithEmailPasswordState.error),
                               ),
                             );
                           }
@@ -166,14 +181,14 @@ class _SignupScreenState extends State<SignupScreen> {
                                         Expanded(
                                           child: AppPrimaryTextField(
                                             hintText: "first name",
-                                            controller: _firstNameController,
+                                            controller: firstNameController,
                                           ),
                                         ),
                                         SizedBox(width: 10),
                                         Expanded(
                                           child: AppPrimaryTextField(
                                             hintText: "last name",
-                                            controller: _lastNameController,
+                                            controller: lastNameController,
                                           ),
                                         ),
                                       ],
@@ -182,7 +197,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                     TextFieldTitle(text: "Email"),
                                     AppPrimaryTextField(
                                       hintText: "example@email.com",
-                                      controller: _emailAddressController,
+                                      controller: emailAddressController,
                                       validator: _validateEmail,
                                     ),
                                     SizedBox(height: 20),
@@ -196,7 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                               !isPasswordVisible;
                                         });
                                       },
-                                      controller: _passwordController,
+                                      controller: passwordController,
                                       validator: _validatePassword,
                                     ),
                                     SizedBox(height: 20),
@@ -211,7 +226,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                               !isConfirmPasswordVisible;
                                         });
                                       },
-                                      controller: _confirmPasswordController,
+                                      controller: confirmPasswordController,
                                       validator: _validateConfirmPassword,
                                     ),
                                   ],

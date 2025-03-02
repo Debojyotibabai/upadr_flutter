@@ -3,7 +3,12 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:upadr/styles/light_colors.dart';
 
 class AppPrimaryOtpField extends StatelessWidget {
-  const AppPrimaryOtpField({super.key});
+  const AppPrimaryOtpField({
+    super.key,
+    required this.onOtpEntered,
+  });
+
+  final void Function(String otp) onOtpEntered;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,9 @@ class AppPrimaryOtpField extends StatelessWidget {
         fontWeight: FontWeight.w400,
         fontSize: 17,
       ),
-      onCodeChanged: (String code) {},
+      onSubmit: (String otp) {
+        onOtpEntered(otp);
+      },
     );
   }
 }

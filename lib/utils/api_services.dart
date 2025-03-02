@@ -84,7 +84,7 @@ class APIService {
       }
     } on DioException catch (e) {
       log(e.toString());
-      throw e.response?.data["message"];
+      throw e.response!.data;
     } catch (e) {
       throw e.toString();
     }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upadr/features/auth/signup/presentation/bloc/signup_with_email_password/signup_with_email_password_bloc.dart';
 import 'package:upadr/features/auth/splash/presentation/pages/splash.dart';
+import 'package:upadr/features/auth/verify_email/presentation/bloc/verify_email/verify_email_bloc.dart';
 import 'package:upadr/init_dependencies.dart';
 
 void main() {
@@ -15,6 +16,9 @@ void main() {
         BlocProvider(
           create: (context) => SignupWithEmailPasswordBloc(
               signupWithEmailPasswordUseCase: getIt()),
+        ),
+        BlocProvider(
+          create: (context) => VerifyEmailBloc(verifyEmailUseCase: getIt()),
         ),
       ],
       child: const MyApp(),

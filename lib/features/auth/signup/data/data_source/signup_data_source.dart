@@ -35,7 +35,7 @@ class SignupDataSourceImpl implements SignupDataSource {
       return response.data["message"];
     } catch (err, s) {
       log(err.toString() + s.toString());
-      throw err.toString();
+      throw (err as Map<String, dynamic>)["message"]!;
     }
   }
 }
