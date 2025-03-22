@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:upadr/features/auth/login/presentation/bloc/login_with_email_password/login_with_email_password_bloc.dart';
 import 'package:upadr/features/auth/signup/presentation/bloc/signup_with_email_password/signup_with_email_password_bloc.dart';
 import 'package:upadr/features/auth/splash/presentation/pages/splash.dart';
 import 'package:upadr/features/auth/verify_email/presentation/bloc/verify_email/verify_email_bloc.dart';
@@ -19,6 +20,10 @@ void main() {
         ),
         BlocProvider(
           create: (context) => VerifyEmailBloc(verifyEmailUseCase: getIt()),
+        ),
+        BlocProvider(
+          create: (context) => LoginWithEmailPasswordBloc(
+              loginWithEmailPasswordUseCase: getIt()),
         ),
       ],
       child: const MyApp(),

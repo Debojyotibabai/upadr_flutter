@@ -11,7 +11,7 @@ import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
 import 'package:upadr/widgets/text/text_field_title.dart';
-import 'package:upadr/widgets/text_field/App_primary_text_field.dart';
+import 'package:upadr/widgets/text_field/app_primary_text_field.dart';
 import 'package:upadr/widgets/text_field/app_primary_password_field.dart';
 
 class SignupScreen extends StatefulWidget {

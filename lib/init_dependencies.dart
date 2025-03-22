@@ -1,4 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:upadr/features/auth/login/data/data_source/login_data_source.dart';
+import 'package:upadr/features/auth/login/data/repository/login_repository_impl.dart';
+import 'package:upadr/features/auth/login/domain/repository/login_repository.dart';
+import 'package:upadr/features/auth/login/domain/use_case/login_with_email_password_use_case.dart';
+import 'package:upadr/features/auth/login/presentation/bloc/login_with_email_password/login_with_email_password_bloc.dart';
 import 'package:upadr/features/auth/signup/data/data_source/signup_data_source.dart';
 import 'package:upadr/features/auth/signup/data/repository/signup_repository_impl.dart';
 import 'package:upadr/features/auth/signup/domain/repository/signup_repository.dart';
@@ -15,6 +20,7 @@ GetIt getIt = GetIt.instance;
 void initDependencies() {
   _signupDependencies();
   _verifyEmailDependencies();
+  _loginDependencies();
 }
 
 void _signupDependencies() {
@@ -47,5 +53,21 @@ void _verifyEmailDependencies() {
     )
     ..registerFactory<VerifyEmailDataSource>(
       () => VerifyEmailDataSourceImpl(),
+    );
+}
+
+void _loginDependencies() {
+  getIt
+    ..registerLazySingleton(
+      () => LoginWithEmailPasswordBloc(loginWithEmailPasswordUseCase: getIt()),
+    )
+    ..registerFactory(
+      () => LoginWithEmailPasswordUseCase(loginRepositoryImpl: getIt()),
+    )
+    ..registerFactory<LoginRepository>(
+      () => LoginRepositoryImpl(loginDataSourceImpl: getIt()),
+    )
+    ..registerFactory<LoginDataSource>(
+      () => LoginDataSourceImpl(),
     );
 }

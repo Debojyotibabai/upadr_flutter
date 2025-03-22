@@ -4,7 +4,7 @@ import 'package:upadr/features/auth/create_new_password/presentation/pages/creat
 import 'package:upadr/widgets/button/app_primary_button.dart';
 import 'package:upadr/widgets/text/primary_heading.dart';
 import 'package:upadr/widgets/text/primary_subheading.dart';
-import 'package:upadr/widgets/text_field/App_primary_text_field.dart';
+import 'package:upadr/widgets/text_field/app_primary_text_field.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -61,7 +61,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 ],
               ),
               SizedBox(height: 70),
-              AppPrimaryTextField(hintText: "email@example.com"),
+              AppPrimaryTextField(
+                hintText: "example@email.com",
+              ),
               Spacer(),
               AppPrimaryButton(
                 buttonText: "Send Code",
