@@ -87,12 +87,12 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             );
 
-            // Navigator.of(context).pushAndRemoveUntil(
-            //   MaterialPageRoute(
-            //     builder: (context) => const MyProcedureListingScreen(),
-            //   ),
-            //   (route) => false,
-            // );
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (context) => const MyProcedureListingScreen(),
+              ),
+              (route) => false,
+            );
           }
         },
         builder: (context, loginWithEmailPasswordState) {
