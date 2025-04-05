@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:upadr/features/auth/login/data/model/login_data_model.dart';
 import 'package:upadr/models/login_with_email_and_password_model.dart';
 import 'package:upadr/utils/api_services.dart';
@@ -28,7 +27,9 @@ class LoginDataSourceImpl implements LoginDataSource {
         contentType: ContentType.json,
       );
 
-      return loginDataModelFromJson(jsonEncode(response.data));
+      final data = loginDataModelFromJson(jsonEncode(response.data));
+
+      return data;
     } catch (err, s) {
       print(err.toString() + s.toString());
       throw (err as Map<String, dynamic>)["message"]!;
