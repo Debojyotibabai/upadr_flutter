@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:upadr/features/auth/verify_email/presentation/use_case/verify_email_use_case.dart';
+import 'package:upadr/features/auth/verify_email/domain/use_case/verify_email_use_case.dart';
 import 'package:upadr/models/verify_email_model.dart';
 
 part 'verify_email_event.dart';

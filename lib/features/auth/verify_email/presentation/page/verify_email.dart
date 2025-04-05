@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:upadr/assets/images.dart';
 import 'package:upadr/features/auth/login/presentation/pages/login.dart';
-import 'package:upadr/features/auth/signup/presentation/bloc/signup_with_email_password/signup_with_email_password_bloc.dart';
+import 'package:upadr/features/auth/verify_email/presentation/bloc/resend_otp/resend_otp_bloc.dart';
 import 'package:upadr/features/auth/verify_email/presentation/bloc/verify_email/verify_email_bloc.dart';
-import 'package:upadr/models/signup_with_email_and_password_model.dart';
+import 'package:upadr/models/resend_otp_model.dart';
 import 'package:upadr/models/verify_email_model.dart';
 import 'package:upadr/styles/light_colors.dart';
 import 'package:upadr/widgets/button/app_primary_button.dart';
@@ -42,17 +42,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   }
 
   void resendOtp() {
-    BlocProvider.of<SignupWithEmailPasswordBloc>(context).add(
-      SignupWithEmailPassword(
-        SignupWithEmailAndPasswordModel(
-          confirmPassword: widget.confirmPassword,
-          emailAddress: widget.emailAddress,
-          firstName: widget.firstName,
-          lastName: widget.lastName,
-          password: widget.password,
-        ),
-      ),
-    );
+    BlocProvider.of<ResendOtpBloc>(context).add(ResendOtp(
+        resendOtpModel: ResendOtpModel(emailAddress: widget.emailAddress)));
   }
 
   void verifyEmail() {
@@ -127,26 +118,23 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                   onOtpEntered: _handleOtpEntered,
                 ),
                 SizedBox(height: 40),
-                BlocConsumer<SignupWithEmailPasswordBloc,
-                    SignupWithEmailPasswordState>(
-                  listener: (context, signupWithEmailPasswordState) {
-                    if (signupWithEmailPasswordState
-                        is SignupWithEmailPasswordSuccess) {
+                BlocConsumer<ResendOtpBloc, ResendOtpState>(
+                  listener: (context, resendOtpState) {
+                    if (resendOtpState is ResendOtpSuccess) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text("OTP sent successfully"),
+                          content: Text(resendOtpState.response),
                         ),
                       );
-                    } else if (signupWithEmailPasswordState
-                        is SignupWithEmailPasswordFailure) {
+                    } else if (resendOtpState is ResendOtpFailure) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text(signupWithEmailPasswordState.error),
+                          content: Text(resendOtpState.error),
                         ),
                       );
                     }
                   },
-                  builder: (context, signupWithEmailPasswordState) {
+                  builder: (context, resendOtpState) {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,11 +149,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: signupWithEmailPasswordState
-                                  is SignupWithEmailPasswordLoading
+                          onPressed: resendOtpState is ResendOtpLoading
                               ? null
                               : () {
-                                  // resendOtp();
+                                  resendOtp();
                                 },
                           child: Text(
                             "Resend",

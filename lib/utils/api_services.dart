@@ -83,9 +83,10 @@ class APIService {
           );
       }
     } on DioException catch (e) {
-      log(e.toString());
+      print(e);
       throw e.response!.data;
     } catch (e) {
+      print(e);
       throw e.toString();
     }
   }
