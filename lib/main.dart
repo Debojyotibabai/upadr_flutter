@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:upadr/features/auth/forgot_password/presentation/bloc/forgot_password/forgot_password_bloc.dart';
 import 'package:upadr/features/auth/login/presentation/bloc/login_with_email_password/login_with_email_password_bloc.dart';
 import 'package:upadr/features/auth/signup/presentation/bloc/signup_with_email_password/signup_with_email_password_bloc.dart';
 import 'package:upadr/features/auth/splash/presentation/pages/splash.dart';
@@ -15,10 +16,11 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt<SignupWithEmailPasswordBloc>()),
-        BlocProvider(create: (context) => getIt<ResendOtpBloc>()),
-        BlocProvider(create: (context) => getIt<VerifyEmailBloc>()),
-        BlocProvider(create: (context) => getIt<LoginWithEmailPasswordBloc>()),
+        BlocProvider(create: (_) => getIt<SignupWithEmailPasswordBloc>()),
+        BlocProvider(create: (_) => getIt<ResendOtpBloc>()),
+        BlocProvider(create: (_) => getIt<VerifyEmailBloc>()),
+        BlocProvider(create: (_) => getIt<LoginWithEmailPasswordBloc>()),
+        BlocProvider(create: (_) => getIt<ForgotPasswordBloc>()),
       ],
       child: const MyApp(),
     ),

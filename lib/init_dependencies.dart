@@ -1,4 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:upadr/features/auth/forgot_password/data/data_source/forgot_password_data_source.dart';
+import 'package:upadr/features/auth/forgot_password/data/repository/forgot_password_repository_impl.dart';
+import 'package:upadr/features/auth/forgot_password/domain/repository/forgot_password_repository.dart';
+import 'package:upadr/features/auth/forgot_password/domain/use_case/forgot_password_use_case.dart';
+import 'package:upadr/features/auth/forgot_password/presentation/bloc/forgot_password/forgot_password_bloc.dart';
 import 'package:upadr/features/auth/login/data/data_source/login_data_source.dart';
 import 'package:upadr/features/auth/login/data/repository/login_repository_impl.dart';
 import 'package:upadr/features/auth/login/domain/repository/login_repository.dart';
@@ -27,6 +32,7 @@ void initDependencies() {
   _resendOtpDependencies();
   _verifyEmailDependencies();
   _loginDependencies();
+  _forgotPasswordDependencies();
 }
 
 void _signupDependencies() {
@@ -91,5 +97,21 @@ void _loginDependencies() {
     )
     ..registerFactory<LoginDataSource>(
       () => LoginDataSourceImpl(),
+    );
+}
+
+void _forgotPasswordDependencies() {
+  getIt
+    ..registerLazySingleton(
+      () => ForgotPasswordBloc(forgotPasswordUseCase: getIt()),
+    )
+    ..registerFactory(
+      () => ForgotPasswordUseCase(forgotPasswordRepositoryImpl: getIt()),
+    )
+    ..registerFactory<ForgotPasswordRepository>(
+      () => ForgotPasswordRepositoryImpl(forgotPasswordDataSourceImpl: getIt()),
+    )
+    ..registerFactory<ForgotPasswordDataSource>(
+      () => ForgotPasswordDataSourceImpl(),
     );
 }
