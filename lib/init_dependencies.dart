@@ -1,4 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:upadr/features/auth/create_new_password/data/data_source/create_new_password_data_source.dart';
+import 'package:upadr/features/auth/create_new_password/data/repository/create_new_password_repository_impl.dart';
+import 'package:upadr/features/auth/create_new_password/domain/repository/create_new_password_repository.dart';
+import 'package:upadr/features/auth/create_new_password/domain/use_case/create_new_password_use_case.dart';
+import 'package:upadr/features/auth/create_new_password/presentation/bloc/create_new_password/create_new_password_bloc.dart';
 import 'package:upadr/features/auth/forgot_password/data/data_source/forgot_password_data_source.dart';
 import 'package:upadr/features/auth/forgot_password/data/repository/forgot_password_repository_impl.dart';
 import 'package:upadr/features/auth/forgot_password/domain/repository/forgot_password_repository.dart';
@@ -33,6 +38,7 @@ void initDependencies() {
   _verifyEmailDependencies();
   _loginDependencies();
   _forgotPasswordDependencies();
+  _createNewPasswordDependencies();
 }
 
 void _signupDependencies() {
@@ -113,5 +119,22 @@ void _forgotPasswordDependencies() {
     )
     ..registerFactory<ForgotPasswordDataSource>(
       () => ForgotPasswordDataSourceImpl(),
+    );
+}
+
+void _createNewPasswordDependencies() {
+  getIt
+    ..registerLazySingleton(
+      () => CreateNewPasswordBloc(createNewPasswordUseCase: getIt()),
+    )
+    ..registerFactory(
+      () => CreateNewPasswordUseCase(createNewPasswordRepositoryImpl: getIt()),
+    )
+    ..registerFactory<CreateNewPasswordRepository>(
+      () => CreateNewPasswordRepositoryImpl(
+          createNewPasswordDataSourceImpl: getIt()),
+    )
+    ..registerFactory<CreateNewPasswordDataSource>(
+      () => CreateNewPasswordDataSourceImpl(),
     );
 }

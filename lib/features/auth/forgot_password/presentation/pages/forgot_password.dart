@@ -119,7 +119,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const CreateNewPasswordScreen(),
+                          builder: (context) => CreateNewPasswordScreen(
+                            emailAddress: _emailController.text,
+                          ),
                         ),
                       );
                     }
