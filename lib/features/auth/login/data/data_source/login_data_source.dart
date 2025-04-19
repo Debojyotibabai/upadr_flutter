@@ -32,11 +32,20 @@ class LoginDataSourceImpl implements LoginDataSource {
 
       final data = loginDataModelFromJson(jsonEncode(response.data));
 
-      await prefs.setString('token', data.tokens.accessToken);
+      if (data.tokens == null) {
+        throw Exception(data.message);
+      }
+
+      await prefs.setString('token', data.tokens!.accessToken!);
 
       return data;
     } catch (err, s) {
       print(err.toString() + s.toString());
+
+      if (err is Exception) {
+        throw err;
+      }
+
       throw (err as Map<String, dynamic>)["message"]!;
     }
   }

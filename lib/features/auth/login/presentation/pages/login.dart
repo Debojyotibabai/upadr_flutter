@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
               is LoginWithEmailPasswordSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(loginWithEmailPasswordState.response.message),
+                content: Text(loginWithEmailPasswordState.response.message!),
               ),
             );
 

@@ -1,7 +1,7 @@
 class LoginDataEntity {
-  String message;
-  TokensEntity tokens;
-  UserEntity user;
+  String? message;
+  TokensEntity? tokens;
+  UserEntity? user;
 
   LoginDataEntity({
     required this.message,
@@ -11,10 +11,10 @@ class LoginDataEntity {
 }
 
 class TokensEntity {
-  String accessToken;
-  String idToken;
-  String refreshToken;
-  String secretHash;
+  String? accessToken;
+  String? idToken;
+  String? refreshToken;
+  String? secretHash;
 
   TokensEntity({
     required this.accessToken,
@@ -25,21 +25,21 @@ class TokensEntity {
 }
 
 class UserEntity {
-  String userId;
-  String userType;
+  String? userId;
+  String? userType;
   dynamic profilePictureUrl;
-  String firstName;
-  String lastName;
+  String? firstName;
+  String? lastName;
   dynamic profileImage;
   dynamic profileImageUrl;
-  String emailAddress;
+  String? emailAddress;
   dynamic phoneCountryCode;
   dynamic phoneNumber;
-  UserSettingsEntity userSettings;
-  String accountStatus;
-  DateTime registeredOn;
-  int numberOfUnreadNotifications;
-  int numberOfUnreadSurveys;
+  UserSettingsEntity? userSettings;
+  String? accountStatus;
+  DateTime? registeredOn;
+  int? numberOfUnreadNotifications;
+  int? numberOfUnreadSurveys;
 
   UserEntity({
     required this.userId,
@@ -61,8 +61,8 @@ class UserEntity {
 }
 
 class UserSettingsEntity {
-  bool isAvailable;
-  bool needToChangePassword;
+  bool? isAvailable;
+  bool? needToChangePassword;
 
   UserSettingsEntity({
     required this.isAvailable,
