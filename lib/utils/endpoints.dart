@@ -5,4 +5,6 @@ abstract class Endpoints {
   static const resendOtp = "/auth/resend-verification-code";
   static const forgotPassword = "/auth/forgot-password";
   static const createNewPassword = "/auth/reset-password";
+
+  static const getAllProcedures = "/user-procedure/get-user-procedures";
 }

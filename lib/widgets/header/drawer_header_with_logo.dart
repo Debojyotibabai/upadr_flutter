@@ -17,6 +17,7 @@ class DrawerHeaderWithLogo extends StatelessWidget
     return AppBar(
       backgroundColor: LightColors.lightSky,
       title: Image.asset(Images.logoWithAppName, scale: 4),
+      centerTitle: true,
       leading: GestureDetector(
         onTap: openDrawer,
         child: Icon(

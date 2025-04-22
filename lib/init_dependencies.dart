@@ -1,4 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:upadr/features/app/my_procedure/data/data_source/procedure_data_source.dart';
+import 'package:upadr/features/app/my_procedure/data/repository/procedure_repository_impl.dart';
+import 'package:upadr/features/app/my_procedure/domain/repository/procedure_repository.dart';
+import 'package:upadr/features/app/my_procedure/domain/use_case/get_all_procedure_use_case.dart';
+import 'package:upadr/features/app/my_procedure/presentation/bloc/get_all_procedure/get_all_procedure_bloc.dart';
 import 'package:upadr/features/auth/create_new_password/data/data_source/create_new_password_data_source.dart';
 import 'package:upadr/features/auth/create_new_password/data/repository/create_new_password_repository_impl.dart';
 import 'package:upadr/features/auth/create_new_password/domain/repository/create_new_password_repository.dart';
@@ -39,6 +44,8 @@ void initDependencies() {
   _loginDependencies();
   _forgotPasswordDependencies();
   _createNewPasswordDependencies();
+
+  _procedureDependencies();
 }
 
 void _signupDependencies() {
@@ -136,5 +143,21 @@ void _createNewPasswordDependencies() {
     )
     ..registerFactory<CreateNewPasswordDataSource>(
       () => CreateNewPasswordDataSourceImpl(),
+    );
+}
+
+void _procedureDependencies() {
+  getIt
+    ..registerLazySingleton(
+      () => GetAllProcedureBloc(getAllProcedureUseCase: getIt()),
+    )
+    ..registerFactory(
+      () => GetAllProcedureUseCase(procedureRepositoryImpl: getIt()),
+    )
+    ..registerFactory<ProcedureRepository>(
+      () => ProcedureRepositoryImpl(procedureDataSourceImpl: getIt()),
+    )
+    ..registerFactory<ProcedureDataSource>(
+      () => ProcedureDataSourceImpl(),
     );
 }

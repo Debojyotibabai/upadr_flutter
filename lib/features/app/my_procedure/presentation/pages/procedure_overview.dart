@@ -89,7 +89,7 @@ class _ProcedureOverviewScreenState extends State<ProcedureOverviewScreen> {
                                     builder: (context) => ConfirmationDialog(
                                       heading: "Cancel Procedure",
                                       subheading:
-                                          "Are you sure you want to cancel your procedure? This process is irreversible and you will have to re-enter your information later.",
+                                          "Are you sure you want to cancel your get_all_procedure? This process is irreversible and you will have to re-enter your information later.",
                                       confirmButtonText: "Cancel Procedure",
                                       confirmButtonButtonColor:
                                           LightColors.deepRed,

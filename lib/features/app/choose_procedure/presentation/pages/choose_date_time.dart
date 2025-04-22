@@ -60,7 +60,7 @@ class _ChooseDateTimeScreenState extends State<ChooseDateTimeScreen> {
                               SizedBox(height: 15),
                               PrimarySubheading(
                                 text:
-                                    "Let’s determine when your procedure is so we can start your prep on schedule.",
+                                    "Let’s determine when your get_all_procedure is so we can start your prep on schedule.",
                                 textColor: LightColors.gray200,
                               ),
                               SizedBox(height: 20),

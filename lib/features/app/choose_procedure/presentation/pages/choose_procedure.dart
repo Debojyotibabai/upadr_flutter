@@ -70,13 +70,13 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                               SizedBox(height: 15),
                               PrimarySubheading(
                                 text:
-                                    "We’re here to get you ready for your procedure and make sure you have everything you need.",
+                                    "We’re here to get you ready for your get_all_procedure and make sure you have everything you need.",
                                 textColor: LightColors.gray200,
                               ),
                               SizedBox(height: 20),
                               PrimarySubheading(
                                 text:
-                                    "Let’s start with determining what procedure you need to get prepared for...",
+                                    "Let’s start with determining what get_all_procedure you need to get prepared for...",
                                 textColor: Colors.black,
                               ),
                               SizedBox(height: 20),
@@ -147,6 +147,7 @@ class _ChooseProcedureScreenState extends State<ChooseProcedureScreen> {
                       children: [
                         SizedBox(height: 10),
                         MyProcedureCard(
+                          title: "Procedure",
                           onPress: () {
                             Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(

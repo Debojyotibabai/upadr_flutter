@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:upadr/features/app/my_procedure/presentation/bloc/get_all_procedure/get_all_procedure_bloc.dart';
 import 'package:upadr/features/auth/create_new_password/presentation/bloc/create_new_password/create_new_password_bloc.dart';
 import 'package:upadr/features/auth/forgot_password/presentation/bloc/forgot_password/forgot_password_bloc.dart';
 import 'package:upadr/features/auth/login/presentation/bloc/login_with_email_password/login_with_email_password_bloc.dart';
@@ -23,6 +24,7 @@ void main() {
         BlocProvider(create: (_) => getIt<LoginWithEmailPasswordBloc>()),
         BlocProvider(create: (_) => getIt<ForgotPasswordBloc>()),
         BlocProvider(create: (_) => getIt<CreateNewPasswordBloc>()),
+        BlocProvider(create: (_) => getIt<GetAllProcedureBloc>()),
       ],
       child: const MyApp(),
     ),

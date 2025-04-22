@@ -37,7 +37,7 @@ class ProcedureOverviewCardRightImage extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    "3 days before procedure",
+                    "3 days before get_all_procedure",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 17,

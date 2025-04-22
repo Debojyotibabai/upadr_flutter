@@ -50,7 +50,7 @@ class NotificationCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "It’s 1 day until your procedure! It’s time to lorem ipsum dolor sit amet dolor...",
+                  "It’s 1 day until your get_all_procedure! It’s time to lorem ipsum dolor sit amet dolor...",
                   style: TextStyle(
                     fontFamily: "Inter",
                     fontWeight: FontWeight.w400,

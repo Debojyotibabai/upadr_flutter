@@ -40,7 +40,7 @@ class _ProcedureParticularStepOverviewScreenState
                     PrimaryHeading(text: "Step 2"),
                     SizedBox(height: 5),
                     Text(
-                      "3 days before procedure",
+                      "3 days before get_all_procedure",
                       style: TextStyle(
                         fontSize: 17,
                         fontFamily: "Inter",

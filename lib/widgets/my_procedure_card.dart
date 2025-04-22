@@ -5,9 +5,11 @@ class MyProcedureCard extends StatelessWidget {
   const MyProcedureCard({
     super.key,
     required this.onPress,
+    required this.title,
   });
 
   final void Function() onPress;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class MyProcedureCard extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                "My Procedure",
+                title,
                 style: TextStyle(
                   fontSize: 17,
                   fontFamily: "Inter",
